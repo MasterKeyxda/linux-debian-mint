@@ -19,7 +19,7 @@ To resolve this, install the non-free (some portion of the code is closed source
 sudo apt-get install intel-media-va-driver-non-free
 ```
 
-To enable AVC/HEVC/VP9/AV1 low power encoding bitrate control:
+To enable AVC/HEVC/VP9/AV1 low power encoding bitrate control (only for cpus older than 12th gen):
 ```
 echo "options i915 enable_guc=2" > sudo tee -a /etc/modprobe.d/i915.conf
 ```
