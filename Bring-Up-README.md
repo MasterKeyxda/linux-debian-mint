@@ -21,6 +21,7 @@ sudo apt-get install intel-media-va-driver-non-free
 
 Add the following to your /etc/environment if you want all apps to use the va-api. Not required for chromium based browser.  
 ```
+export LIBVA_DRIVERS_PATH=/usr/lib/x86_64-linux-gnu/dri/
 export LIBVA_DRIVER_NAME=iHD
 ```
 
