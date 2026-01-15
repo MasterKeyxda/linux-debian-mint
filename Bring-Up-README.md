@@ -19,6 +19,11 @@ To resolve this, install the non-free (some portion of the code is closed source
 sudo apt-get install intel-media-va-driver-non-free
 ```
 
+To enable AVC/HEVC/VP9/AV1 low power encoding bitrate control:
+```
+echo "options i915 enable_guc=2" > sudo tee -a /etc/modprobe.d/i915.conf
+```
+
 Add the following to your /etc/environment if you want all apps to use the va-api. Not required for chromium based browser.  
 ```
 export LIBVA_DRIVERS_PATH=/usr/lib/x86_64-linux-gnu/dri/
