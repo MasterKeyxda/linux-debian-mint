@@ -54,7 +54,12 @@ export CUDA_DISABLE_PERF_BOOST=1
 
 ## Screen too slow, mouse cursor jumping, keyboard strokes not displaying quickly, or general lag in screen  
 
-TODO: Panel Self Refresh  
+For Intel gpus there can be screen flickering. To fix this add the following to the boot parameters:
+
+```
+i915.enable_psr=0
+```
+You can use terminal or if using linux mint you can use system administration tool.
 
 ## Intel p_state (trade power for slightly lower IO latency)  
 
