@@ -66,9 +66,9 @@ You can use terminal or if using linux mint you can use system administration to
 TODO: p_state hw io wait  
 Need to enable hwp_dynamic_boost at each boot. Best way to do is with systemd service.
 
-'''
+```
 sudo nano /etc/systemd/system/hwp-dynamic-boost.service
-'''
+```
 
 Then paste the following:
 
