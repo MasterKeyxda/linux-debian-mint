@@ -64,7 +64,45 @@ You can use terminal or if using linux mint you can use system administration to
 ## Intel p_state (trade power for slightly lower IO latency)  
 
 TODO: p_state hw io wait  
+Need to enable hwp_dynamic_boost at each boot. Best way to do is with systemd service.
+
+'''
+sudo nano /etc/systemd/system/hwp-dynamic-boost.service
+'''
+
+Then paste the following:
+
+```
+[Unit]
+Description=Enable HWP Dynamic Boost
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c 'echo 1 > /sys/devices/system/cpu/intel_pstate/hwp_dynamic_boost'
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Enable the service with 
+```
+sudo systemctl enable hwp-dynamic-boost.service
+sudo systemctl start hwp-dynamic-boost.service
+```
+You should now have intel_pstate hwp dynamic boost enabled.
 
 ## Fingerprint not working  
 
-TODO: Broadcom fingerprint sensor  
+Fingerprint is a tricky one. The dell latitude 7430 uses a broadcom fingerprint sensor. All of the drivers are provided by dell controlvault drivers for linux.
+
+There are many discussion forums on dell community but none of them will work with linux kernel 6.14 - 6.17 because the links they provide are older.
+
+Use the latest brcm_linux_fp package from either one of the following:
+
+https://packages.broadcom.com/ui/repos/tree/General/dell-controlvault-drivers/brcm_linux_fp_6.4.334_6.4.054.0.tgz
+
+https://packages.broadcom.com/artifactory/dell-controlvault-drivers/
+
+Install this package and reboot, you should have your fingerprint working now. Use the UI in Linux mint to enroll fingerprint (or use cli).
